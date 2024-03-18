@@ -26,6 +26,9 @@ app.use("/", router);
 
 // Start the server on port 3001
 const PORT: number = parseInt(process.env.PORT || "3001"); // Use parseInt to ensure it's a number
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+//Connect to the database before listening
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log("listening for requests");
+  });
 });
